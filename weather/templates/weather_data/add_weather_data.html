@@ -1,0 +1,30 @@
+{% extends './base.html'%}
+{% load crispy_forms_tags %}
+{% block title%} Add Weather Data{% endblock title%}
+
+
+
+{% block header %}
+ Add Weather Data
+{% endblock header%}
+{% block form %}
+<div class="form"  style='color:white;line-height: 26px;'>
+    <form method="post" action="{% url 'add_weather_data'%}">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <div class="button_div">
+              <button type="submit" class="submit_btn"> Add Data </button>
+
+              <p style="color:#f99396;"> {{message}} </p>  
+      </div>
+
+
+    </form>
+</div>
+{% endblock form%}
+
+{% block table%}
+
+{% endblock table%}
+</body>
+</html>

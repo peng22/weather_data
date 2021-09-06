@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{%  load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title%} {% endblock title%}</title>
+    <link rel="stylesheet" href="{% static 'weather_data/css/weather_data.css'%}">
+    <!-- arrows -->
+    <script src="{% static 'weather_data/js/arrow.js'%}"></script>
+  </head>
+  <body>
+    <div class="topnav">
+      <a href="{% url 'add_weather_data'%}">add weather data</a>
+      <a href="{% url 'list_weather_data'%}">list weather data</a>
+      <a href="{% url 'summary_data'%}">Summary Data</a>
+      <a href="admin/">Admin</a>
+    </div>
+    <div class="header">
+       {% block header %}
+       Ti
+       {% endblock header%}
+    </div>
+   <div class="wrapper">
+    {% block form%}
+     <div class="form">
+
+     </div>
+    {% endblock form%}
+
+    {% block table%}
+       <div class="table">
+
+       </div>
+    {% endblock table%}
+   </div>
+
+
+
+
+<script type="text/javascript">
+  {% block script%}
+  {% endblock%}
+</script>
+
+  </body>
+</html>

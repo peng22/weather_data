@@ -1,0 +1,90 @@
+{% extends './base.html'%}
+
+{% block header %}
+ Summary Data
+{% endblock header%}
+{% block form%} {% endblock form%}
+{% block table%}
+<div class="table">
+  <div class="row header">
+    <div class="cell">
+      Start Date
+    </div>
+    <div class="cell">
+      End Date
+    </div>
+    <div class="cell">
+      Average Temperature
+    </div>
+    <div class="cell">
+      Average Humidity
+    </div>
+  </div>
+{% for item in summary_data_list%}
+  <div class="row">
+    <div class="cell" data-title="Name">
+        <h5>{{item.start_date.date}} </h5>
+        <h5>{{item.start_date.time}} </h5>
+    </div>
+    <div class="cell" data-title="Age">
+      <h5>{{item.end_date.date}} </h5>
+      <h5>{{item.end_date.time}} </h5>
+    </div>
+    <div class="cell" data-title="Occupation">
+       {% if item.avg_temp  > 25 %}
+       <span class="span_true ">{{item.avg_temp}}
+        {% if item.temp_inc == 'True' %}
+          <i class='fas fa-arrow-circle-up' style='font-size:22px;color:red'></i>
+          {% elif item.temp_inc == 'Nutral'%}
+          <i ></i>
+          {% else %}
+          <i class='fas fa-arrow-circle-down' style='font-size:22px;color:red'></i>
+        {% endif%}
+
+
+       </span>
+       {%else%}
+       <span class="span_false">{{item.avg_temp}}
+         {% if item.temp_inc == 'True' %}
+
+         <i class='fas fa-arrow-circle-up' style='font-size:22px;color:green'></i>
+         {% elif item.temp_inc == 'Nutral'%}
+         <i></i>
+         {% else %}
+         <i class='fas fa-arrow-circle-down' style='font-size:22px;color:green'></i>
+         {% endif%}
+
+        </span>
+       {% endif%}
+    </div>
+    <div class="cell" data-title="Location">
+         {% if item.avg_humid  > 55 %}
+          <span class="span_true">{{item.avg_humid}}
+            {% if item.humid_inc == 'True' %}
+              <i class='fas fa-arrow-circle-up' style='font-size:22px;color:red'></i>
+              {% elif item.humid_inc == 'Nutral'%}
+              <i ></i>
+              {% else %}
+              <i class='fas fa-arrow-circle-down' style='font-size:22px;color:red'></i>
+            {% endif%}
+           </span>
+         {%else%}
+         <span class="span_false">{{item.avg_humid}}
+           {% if item.humid_inc == 'True' %}
+             <i class='fas fa-arrow-circle-up' style='font-size:22px;color:green'></i>
+             {% elif item.humid_inc == 'Nutral'%}
+             <i ></i>
+             {% else %}
+             <i class='fas fa-arrow-circle-down' style='font-size:22px;color:green'></i>
+           {% endif%}
+         </span>
+         {% endif%}
+    </div>
+  </div>
+{% endfor%}
+</div>
+{% endblock table%}
+{% block script%}
+}
+
+{% endblock%}
